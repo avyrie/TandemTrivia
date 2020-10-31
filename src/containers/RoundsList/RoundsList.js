@@ -3,7 +3,7 @@ import data from '../../data/Apprentice_TandemFor400_Data.json';
 import Round from '../../components/Round/Round.js'
 
 function RoundsList(props) {
-    const theData = JSON.stringify(data);
+    // const theData = JSON.stringify(data);
 
     // * Creates an array of random numbers between 5 and 21 *
     let questions = [];
