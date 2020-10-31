@@ -7,11 +7,20 @@ class Round extends Component {
         questions: [],
         answers: [],
         index: 0,
+        clicked: false,
+        disabled: false,
     }
 
     // Increases the index in state by 1. On click, this will update the current round to a new round
     nextQuestion = () => {
         this.setState({ index: (this.state.index +1) % this.state.roundsList.length});
+        let buttons = document.querySelectorAll("#button");
+        for(let i = 0; i < 4; i++) {
+            buttons.disabled = false;
+            this.setState({ clicked: true });
+            this.setState({ disabled: false })
+        }
+        console.log(`Buttons ${buttons}`)
     };
     
     render() {
@@ -57,30 +66,36 @@ class Round extends Component {
 
         // If you click a choice and it is wrong, function will add false to an array and vice versa 
         let tally = [];
+        tally.length = 4;
         function onAnswer(e) {
             if (e.target.innerHTML == currentCorrect) {
-                tally.push(true);
+                tally.shift(true);
                 e.target.className += "true"
+                setState({disabled: true})
+
             } else {
-                tally.push(false);
+                tally.shift(false);
                 e.target.className += "false"
+                setState({disabled: true})
             }
             console.log(`Tally: ${tally.length}`)
+            e.target.disabled = this.state.disabled;
+            console.log(`e.target ${e.target}`)
+
             return tally;
         }
+        let className = this.state.clicked ? 'click-state' : 'base-state';
         
-        
-
         return (
             <div className="round-cont">
                 <div className="round-wrap">
                     <h3>Question: </h3>
                     <p>{currentQuestion}</p>
                     <ul className="round-choices">
-                        <li><button onClick={onAnswer}>{answers[0]}</button></li>
-                        <li><button onClick={onAnswer}>{answers[1]}</button></li>
-                        <li><button onClick={onAnswer}>{answers[2]}</button></li>
-                        <li><button onClick={onAnswer}>{answers[3]}</button></li>
+                        <li><button id="button" className={className} onClick={onAnswer}>{answers[0]}</button></li>
+                        <li><button id="button" className={className} onClick={onAnswer}>{answers[1]}</button></li>
+                        <li><button id="button" className={className} onClick={onAnswer}>{answers[2]}</button></li>
+                        <li><button id="button" className={className} onClick={onAnswer}>{answers[3]}</button></li>
                     </ul>
                     <button className="next-btn" onClick={this.nextQuestion}>Next</button>
                     {/* <button className="test" onClick={fillArray}>Fill</button> */}
