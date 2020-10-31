@@ -7,10 +7,6 @@ class Round extends Component {
         questions: [],
         answers: [],
         index: 0,
-        clicked: false,
-        disabled: false,
-        classTrue: "no",
-        classFalse: "no",
         tally: [],
     }
 
@@ -18,40 +14,42 @@ class Round extends Component {
     nextQuestion = () => {
         this.setState({ index: (this.state.index +1) % this.state.roundsList.length});
         let buttons = document.querySelectorAll("#button");
-       
-        // tButtons.setAttribute("class", ".no")
         
         // * Enables the buttons to be selected again  and removes class responsible for color *
         buttons.forEach(function(button) {
             button.setAttribute("class", ".no")
             button.disabled = false;
         })
+        this.setState({ answers: [] })
     };
 
 
-    createRounds = (wrong, right) => {
+    answersArr = (wrong, right) => {
         // Create an answers array with both wrong and right answers ----
-        let answers = [];
+        let answers = this.state.answers;
         for(let i = 0; i < wrong.length; i++) {
             answers.push(JSON.stringify(wrong[i]))
         }
         answers.push(right)
-        // console.log(`Answers array ${answers}`)
+        console.log(`Answers array ${answers}`)
+
+        // Randomizes answers array
+        function shuffle (array) {
+            let currentIndex = array.length, tempVal, randomIndex;
+            while (0 !== currentIndex) {
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+        
+                    tempVal = array[currentIndex];
+                    array[currentIndex] = array[randomIndex];
+                    array[randomIndex] = tempVal;
+                }
+            return array;
+        };
+        answers = shuffle(answers);
+        console.log(`ANSWERS SHUF ${answers}`)
         return answers;
     }
-        // Randomizes answers array
-    // shuffle = (array) => {
-    //         let currentIndex = array.length, tempVal, randomIndex;
-    //         while (0 !== currentIndex) {
-    //             randomIndex = Math.floor(Math.random() * currentIndex);
-    //             currentIndex -= 1;
-
-    //             tempVal = array[currentIndex];
-    //             array[currentIndex] = array[randomIndex];
-    //             array[randomIndex] = tempVal;
-    //         }
-    //         return array;
-    //     };
     
 
     onAnswer = (e) => {
@@ -88,14 +86,13 @@ class Round extends Component {
     render() {
         // variable holding the list of 10 random rounds
         let roundsList = this.state.roundsList;
-        console.log(`Rounds List: ${roundsList}`);
+        console.log(`Rounds List: ${JSON.stringify(roundsList)}`);
         // variable holding the current round 
         let currentRound = roundsList[this.state.index];
         let currentIncorrects = currentRound.incorrect;
         let currentCorrect = JSON.stringify(currentRound.correct);
         let currentQuestion = JSON.stringify(currentRound.question);
-        let answers = this.createRounds(currentIncorrects, currentCorrect)
-        let tally = [];
+        let answers = this.answersArr(currentIncorrects, currentCorrect)
 
         
         // let answers = this.shuffle(nonShuf);
