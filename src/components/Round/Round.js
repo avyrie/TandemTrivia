@@ -23,6 +23,8 @@ class Round extends Component {
         this.setState({ answers: [] })
         let emptyAns = document.getElementById("button3");
         emptyAns.setAttribute("class", "no")
+        emptyAns.disabled = false;
+
     };
 
 
@@ -83,7 +85,8 @@ class Round extends Component {
         buttons.forEach(function(button) {
             button.disabled = true;
         })
-        
+        let emptyAns = document.getElementById("button3");
+        emptyAns.disabled = true;
         console.log(`Tally: ${this.state.tally}`)
         // return tally;
         
