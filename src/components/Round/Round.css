@@ -48,3 +48,12 @@
     width: 65%;
     position: relative;
 }
+
+.true {
+    color: #fff;
+    background-color: green;
+}
+.false {
+    color: #fff;
+    background-color: red;
+}
