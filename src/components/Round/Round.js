@@ -3,88 +3,46 @@ import './Round.css';
 
 class Round extends Component {
     state = {
+        roundsList: this.props.roundsList,
         questions: [],
         answers: [],
+        index: 0,
     }
 
-    reset = () => {
-        this.setState({answers: []})
-        let reset = JSON.stringify(this.state);
-        // console.log(`resetted state: ${reset}`)
-    }
+    // Increases the index in state by 1. On click, this will update the current round to a new round
+    nextQuestion = () => {
+        this.setState({ index: (this.state.index +1) % this.state.roundsList.length});
+    };
     
     render() {
-        // let answers = [];
-        let tally = [];
-        const data = this.props.data;
-        // console.log(data)
-        const parsedData = JSON.stringify(data);
-        const parsedQuestion = JSON.stringify(data[0].question);
-
-
-        for(let i = 0; i < data.length; i++) {
-            const parsedQuestions = JSON.stringify(data[i].question);
-            // console.log(parsedQuestions)
-        }
-
-        data.forEach((question) => {
-            // console.log(`forEach question: ${question.question}`)
-        })
+        // variable holding the list of 10 random rounds
+        let roundsList = this.state.roundsList;
+        console.log(roundsList);
+        // variable holding the current round 
+        let currentRound = roundsList[this.state.index];
+        let currentQuestion = JSON.stringify(currentRound.question);
+        let currentIncorrects = currentRound.incorrect;
+        let currentCorrect = JSON.stringify(currentRound.correct);
         
-
-        const questions = data.map(question  => {
-            return question.question;
-        })
-        // console.log(JSON.stringify(questions[0]))
         
-        const correctAnswers = data.map(correct => {
-            return correct.correct;
-        })
-        // console.log(JSON.stringify(correctAnswers[0]))
+        
+        // Create an answers array with both wrong and right answers ----
+        let answers = [];
 
-        const incorrectAnswers = data.map(incorrect => {
-            return incorrect.incorrect;
-        })
-        // console.log(JSON.stringify(incorrectAnswers[0]))
-
-        let answersString = JSON.stringify(this.state.answers);
-        let answers = this.state.answers;
-        // console.log(`This.state.answers: ${answersString}`)
-
-
-        // Create a questions array with both wrong and right answers ----
-        function fillArray(wrong, right) {
-            let executed = false;
-            return function() {
-                if (!executed) {
-                    executed = true;
-                    // console.log(`Original answers: ${answers}`)
-                    wrong.forEach((j) => {
-                    answers.push(j)
-                });
-                    answers.push(right)
-                    // console.log(`Answers array from state ${answers}`)
-                }
+        function answersArr(wrong, right) {
+            for(let i = 0; i < wrong.length; i++) {
+                answers.push(JSON.stringify(wrong[i]))
             }
+            answers.push(right)
+            console.log(`Answers array ${answers}`)
         }
-        fillArray(incorrectAnswers[0], correctAnswers[0])
-        // console.log(`Post answers: ${answers}`)
-
-        // 2
-        function fillArray() {
-            for (let i = 0; i < data.length; i++) {
-                // console.log(`Original answers: ${answers}`)
-                incorrectAnswers[i].forEach((j) => {
-                answers.push(j)
-                });
-                answers.push(correctAnswers[i])
-                // console.log(`Answers array from state ${answers}`)
-            }
-        }
+            
+        answersArr(currentIncorrects, currentCorrect);
         
 
 
         // If you click a choice and it is wrong, function will add false to an array and vice versa ----
+        let tally = [];
         function onAnswer(e) {
             if (e.target.innerHTML == answers[3]) {
                 tally.push(true)
@@ -125,15 +83,15 @@ class Round extends Component {
             <div className="round-cont">
                 <div className="round-wrap">
                     <h3>Question: </h3>
-                    <p>{parsedQuestion}</p>
+                    <p>{currentQuestion}</p>
                     <ul className="round-choices">
                         <li><button id="choices1" onClick={onAnswer}>{answers[0]}</button></li>
                         <li><button className="choices" onClick={onAnswer}>{answers[1]}</button></li>
                         <li><button className="choices" onClick={onAnswer}>{answers[2]}</button></li>
                         <li><button className="choices" onClick={onAnswer}>{answers[3]}</button></li>
                     </ul>
-                    <button className="next-btn" onClick={this.reset}>Next</button>
-                    <button className="test" onClick={fillArray}>Fill</button>
+                    <button className="next-btn" onClick={this.nextQuestion}>Next</button>
+                    {/* <button className="test" onClick={fillArray}>Fill</button> */}
                 </div>
             </div>
         )
