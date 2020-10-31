@@ -3,12 +3,18 @@ import './Round.css';
 
 class Round extends Component {
     state = {
+        questions: [],
         answers: [],
     }
 
+    reset = () => {
+        this.setState({answers: []})
+        let reset = JSON.stringify(this.state);
+        // console.log(`resetted state: ${reset}`)
+    }
     
     render() {
-        
+        // let answers = [];
         let tally = [];
         const data = this.props.data;
         // console.log(data)
@@ -18,7 +24,7 @@ class Round extends Component {
 
         for(let i = 0; i < data.length; i++) {
             const parsedQuestions = JSON.stringify(data[i].question);
-            console.log(parsedQuestions)
+            // console.log(parsedQuestions)
         }
 
         data.forEach((question) => {
@@ -43,20 +49,39 @@ class Round extends Component {
 
         let answersString = JSON.stringify(this.state.answers);
         let answers = this.state.answers;
-        console.log(`This.state.answers: ${answersString}`)
+        // console.log(`This.state.answers: ${answersString}`)
 
 
         // Create a questions array with both wrong and right answers ----
         function fillArray(wrong, right) {
-            wrong.forEach((j) => {
-            answers.push(j)
-        });
-            answers.push(right)
-            console.log(`Answers array from state ${answers}`)
+            let executed = false;
+            return function() {
+                if (!executed) {
+                    executed = true;
+                    // console.log(`Original answers: ${answers}`)
+                    wrong.forEach((j) => {
+                    answers.push(j)
+                });
+                    answers.push(right)
+                    // console.log(`Answers array from state ${answers}`)
+                }
+            }
         }
-        // console.log(answers)*
-
         fillArray(incorrectAnswers[0], correctAnswers[0])
+        // console.log(`Post answers: ${answers}`)
+
+        // 2
+        function fillArray() {
+            for (let i = 0; i < data.length; i++) {
+                // console.log(`Original answers: ${answers}`)
+                incorrectAnswers[i].forEach((j) => {
+                answers.push(j)
+                });
+                answers.push(correctAnswers[i])
+                // console.log(`Answers array from state ${answers}`)
+            }
+        }
+        
 
 
         // If you click a choice and it is wrong, function will add false to an array and vice versa ----
@@ -66,17 +91,11 @@ class Round extends Component {
             } else {
                 tally.push(false)
             }
-            console.log(`Tally: ${tally}`)
-            console.log(e.target)
+            // console.log(`Tally: ${tally}`)
+            // console.log(e.target)
         }
 
-        // *** not working
-        let pageReset = () => {
-            this.setState({answers: []})
-            let newState = JSON.stringify(this.state);
-            console.log(`New state ${newState}`);
-          }
-        
+       
         
 
 
@@ -113,7 +132,8 @@ class Round extends Component {
                         <li><button className="choices" onClick={onAnswer}>{answers[2]}</button></li>
                         <li><button className="choices" onClick={onAnswer}>{answers[3]}</button></li>
                     </ul>
-                    <button className="next-btn" onClick={pageReset}>Next</button>
+                    <button className="next-btn" onClick={this.reset}>Next</button>
+                    <button className="test" onClick={fillArray}>Fill</button>
                 </div>
             </div>
         )
