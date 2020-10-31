@@ -17,13 +17,13 @@ class Round extends Component {
     // * Increases the index in state by 1. On click, this will update the current round to a new round *
     nextQuestion = () => {
         this.setState({ index: (this.state.index +1) % this.state.roundsList.length});
-        // let fButtons = document.querySelectorAll(".false");
-        // let tButtons = document.querySelectorAll(".true");
-        // fButtons.setAttribute("class", ".no")
+        let buttons = document.querySelectorAll("#button");
+       
         // tButtons.setAttribute("class", ".no")
         
-        let buttons = document.querySelectorAll("#button");
+        // * Enables the buttons to be selected again  and removes class responsible for color *
         buttons.forEach(function(button) {
+            button.setAttribute("class", ".no")
             button.disabled = false;
         })
     };
@@ -66,18 +66,19 @@ class Round extends Component {
         
         if (e.target.innerHTML == currentCorrect) {
             this.state.tally.push(true);
-            e.target.className += "true"
+            e.target.setAttribute("class", "true")
+            // e.target.className += "true"
         } else {
             this.state.tally.push(false);
-            e.target.className += "false"
+            e.target.setAttribute("class", "false")
+            // e.target.className += "false"
         }
      
+        // * Disables all the answer button so another selection cannot be made *
         let buttons = document.querySelectorAll("#button");
         buttons.forEach(function(button) {
             button.disabled = true;
         })
-        // e.target.disabled = dis;
-        console.log(`e.target ${e.target}`)
         
         console.log(`Tally: ${this.state.tally}`)
         // return tally;
