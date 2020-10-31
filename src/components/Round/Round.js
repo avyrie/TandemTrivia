@@ -17,10 +17,12 @@ class Round extends Component {
         
         // * Enables the buttons to be selected again  and removes class responsible for color *
         buttons.forEach(function(button) {
-            button.setAttribute("class", ".no")
+            button.setAttribute("class", "no")
             button.disabled = false;
         })
         this.setState({ answers: [] })
+        let emptyAns = document.getElementById("button3");
+        emptyAns.setAttribute("class", "no")
     };
 
 
@@ -31,7 +33,7 @@ class Round extends Component {
             answers.push(JSON.stringify(wrong[i]))
         }
         answers.push(right)
-        console.log(`Answers array ${answers}`)
+        // console.log(`Answers array ${answers}`)
 
         // Randomizes answers array
         function shuffle (array) {
@@ -47,7 +49,11 @@ class Round extends Component {
             return array;
         };
         answers = shuffle(answers);
-        console.log(`ANSWERS SHUF ${answers}`)
+        // console.log(`ANSWERS SHUF ${answers}`)
+        if (answers.length < 4) {
+            let emptyAns = document.getElementById("button3");
+            emptyAns.setAttribute("class", "empty")
+        }
         return answers;
     }
     
@@ -86,7 +92,7 @@ class Round extends Component {
     render() {
         // variable holding the list of 10 random rounds
         let roundsList = this.state.roundsList;
-        console.log(`Rounds List: ${JSON.stringify(roundsList)}`);
+        // console.log(`Rounds List: ${JSON.stringify(roundsList)}`);
         // variable holding the current round 
         let currentRound = roundsList[this.state.index];
         let currentIncorrects = currentRound.incorrect;
@@ -94,8 +100,7 @@ class Round extends Component {
         let currentQuestion = JSON.stringify(currentRound.question);
         let answers = this.answersArr(currentIncorrects, currentCorrect)
 
-        
-        // let answers = this.shuffle(nonShuf);
+        console.log(`ANSWERS: ${answers.length}`)
         
         return (
             <div className="round-cont">
@@ -106,7 +111,7 @@ class Round extends Component {
                         <li><button id="button" onClick={this.onAnswer}>{answers[0]}</button></li>
                         <li><button id="button" onClick={this.onAnswer}>{answers[1]}</button></li>
                         <li><button id="button" onClick={this.onAnswer}>{answers[2]}</button></li>
-                        <li><button id="button" onClick={this.onAnswer}>{answers[3]}</button></li>
+                        <li><button id="button3" onClick={this.onAnswer}>{answers[3]}</button></li>
                     </ul>
                     <button className="next-btn" onClick={this.nextQuestion}>Next</button>
                     {/* <button className="test" onClick={fillArray}>Fill</button> */}
