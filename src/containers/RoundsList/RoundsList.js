@@ -48,9 +48,6 @@ function RoundsList(props) {
         return roundsList;
     }
     createQuestions();
-    // console.log(JSON.stringify(roundsList[0].question));
-    // console.log(roundsList);
-
     
     return (
         <Round 

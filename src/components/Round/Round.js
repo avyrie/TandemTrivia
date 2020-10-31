@@ -4,32 +4,13 @@ import './Round.css';
 class Round extends Component {
     state = {
         roundsList: this.props.roundsList,
-        questions: [],
         answers: [],
         index: 0,
         tally: [],
     }
 
-    // * Increases the index in state by 1. On click, this will update the current round to a new round *
-    nextQuestion = () => {
-        this.setState({ index: (this.state.index +1) % this.state.roundsList.length});
-        let buttons = document.querySelectorAll("#button");
-        
-        // * Enables the buttons to be selected again  and removes class responsible for color *
-        buttons.forEach(function(button) {
-            button.setAttribute("class", "no")
-            button.disabled = false;
-        })
-        this.setState({ answers: [] })
-        let emptyAns = document.getElementById("button3");
-        emptyAns.setAttribute("class", "no")
-        emptyAns.disabled = false;
-
-    };
-
-
+    // * Create an answers array with both wrong and right answers *
     answersArr = (wrong, right) => {
-        // Create an answers array with both wrong and right answers ----
         let answers = this.state.answers;
         for(let i = 0; i < wrong.length; i++) {
             answers.push(JSON.stringify(wrong[i]))
@@ -68,14 +49,14 @@ class Round extends Component {
         let currentCorrect = JSON.stringify(currentRound.correct);
        
         // If you click a choice and it is wrong, function will add false to an array and vice versa 
-        // let tally = [];
+        let tally = this.state.tally;
         
         if (e.target.innerHTML == currentCorrect) {
-            this.state.tally.push(true);
+            tally.push(true);
             e.target.setAttribute("class", "true")
             // e.target.className += "true"
         } else {
-            this.state.tally.push(false);
+            tally.push(false);
             e.target.setAttribute("class", "false")
             // e.target.className += "false"
         }
@@ -87,10 +68,42 @@ class Round extends Component {
         })
         let emptyAns = document.getElementById("button3");
         emptyAns.disabled = true;
-        console.log(`Tally: ${this.state.tally}`)
+        console.log(`Tally: ${tally}`)
         // return tally;
+        console.log(`Tally length: ${tally.length}`)
+        if (tally.length > 9) {
+            let endGame = document.querySelector("#endgame");
+            endGame.setAttribute("class", "showResults")
+            let next = document.querySelector("#next");
+            next.setAttribute("class", "endgame")
+        } 
         
     }
+
+    // * Increases the index in state by 1. On click, this will update the current round to a new round *
+    nextQuestion = () => {
+        let tally = this.state.tally;
+        let roundsList = this.state.roundsList;
+        if (tally.length > 9) {
+            let endGame = document.querySelector("#endgame");
+            endGame.setAttribute("class", "showResults")
+        } else {
+            this.setState({ index: (this.state.index +1) % roundsList.length});
+            let buttons = document.querySelectorAll("#button");
+            
+            // * Enables the buttons to be selected again  and removes class responsible for color *
+            buttons.forEach(function(button) {
+                button.setAttribute("class", "no")
+                button.disabled = false;
+            })
+            this.setState({ answers: [] })
+            let emptyAns = document.getElementById("button3");
+            emptyAns.setAttribute("class", "no")
+            emptyAns.disabled = false;
+        }
+    };
+
+    
     
     render() {
         // variable holding the list of 10 random rounds
@@ -116,8 +129,8 @@ class Round extends Component {
                         <li><button id="button" onClick={this.onAnswer}>{answers[2]}</button></li>
                         <li><button id="button3" onClick={this.onAnswer}>{answers[3]}</button></li>
                     </ul>
-                    <button className="next-btn" onClick={this.nextQuestion}>Next</button>
-                    {/* <button className="test" onClick={fillArray}>Fill</button> */}
+                    <button className="next-btn" id="next" onClick={this.nextQuestion}>Next</button>
+                    <button id="endgame" className="endgame" onClick={this.endGame}>See Results</button>
                 </div>
             </div>
         )
