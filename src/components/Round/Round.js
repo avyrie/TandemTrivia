@@ -17,12 +17,15 @@ class Round extends Component {
     // * Increases the index in state by 1. On click, this will update the current round to a new round *
     nextQuestion = () => {
         this.setState({ index: (this.state.index +1) % this.state.roundsList.length});
-        let fButtons = document.querySelectorAll(".false");
-        let tButtons = document.querySelectorAll(".true");
-        fButtons.setAttribute("class", ".no")
-        tButtons.setAttribute("class", ".no")
+        // let fButtons = document.querySelectorAll(".false");
+        // let tButtons = document.querySelectorAll(".true");
+        // fButtons.setAttribute("class", ".no")
+        // tButtons.setAttribute("class", ".no")
         
-        this.setState({ disabled: false })
+        let buttons = document.querySelectorAll("#button");
+        buttons.forEach(function(button) {
+            button.disabled = false;
+        })
     };
 
 
@@ -68,10 +71,12 @@ class Round extends Component {
             this.state.tally.push(false);
             e.target.className += "false"
         }
-        let dis = this.state.disabled;
-        this.setState({ disabled: true })
-        let buttons = document.querySelectorAll("button");
-        buttons.disabled = dis;
+     
+        let buttons = document.querySelectorAll("#button");
+        buttons.forEach(function(button) {
+            button.disabled = true;
+        })
+        // e.target.disabled = dis;
         console.log(`e.target ${e.target}`)
         
         console.log(`Tally: ${this.state.tally}`)
