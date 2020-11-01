@@ -36,6 +36,8 @@ Clicking the "See Results" button will take the user to the results page where t
 ## Icons
 Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 
+Icons made by <a href="https://www.flaticon.com/free-icon/faq_788893?term=color%20question&page=1&position=10" title="Prosymbols">Prosymbols</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+
 ## Technologies Used
 - React.js
 - JavaScript
