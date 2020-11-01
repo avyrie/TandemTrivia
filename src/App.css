@@ -8,10 +8,18 @@ body {
   border-radius: 2px solid rgb(11, 156, 156);
   font-family: 'Source Code Pro', monospace;
 }
-
+/* All buttons  */
 button {
   font-family: 'Source Code Pro', monospace;
 }
 button:hover {
   cursor: pointer;
+}
+/* No underline on links  */
+a {
+  text-decoration: none;
+}
+a:hover {
+  cursor: pointer;
+  text-decoration: none;
 }

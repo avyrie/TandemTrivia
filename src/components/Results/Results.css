@@ -19,6 +19,8 @@
     border-radius: 50%;
     height: 25vh;
     width: 20vw;
+    min-width: 135px;
+    max-width: 300px;
     display: flex;
     align-items: center;
     justify-content: center;

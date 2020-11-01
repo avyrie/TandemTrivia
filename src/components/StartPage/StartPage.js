@@ -20,8 +20,6 @@ function StartPage() {
 
             <div className="lowercircle"><img src={Circle}/></div>
             
-            
-            
             <div className="btns-wrap">
                 <Link to='/questions'>
                     <button className="start-btns"><i class="fas fa-play-circle"></i>Begin Game</button>

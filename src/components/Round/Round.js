@@ -75,6 +75,8 @@ class Round extends Component {
         console.log(`Tally: ${tally}`)
         // return tally;
         console.log(`Tally length: ${tally.length}`)
+        let nextBtn = document.getElementById("next");
+        nextBtn.removeAttribute("class", "next-btn")
         if (tally.length > 9) {
             let endGame = document.querySelector("#endgame");
             endGame.setAttribute("class", "showResults")
@@ -93,6 +95,7 @@ class Round extends Component {
         } else {
             this.setState({ index: (this.state.index +1) % roundsList.length});
             let buttons = document.querySelectorAll("#button");
+            let next = document.querySelector(".next-btn")
             
             // * Enables the buttons to be selected again  and removes class responsible for color *
             buttons.forEach(function(button) {
@@ -101,6 +104,8 @@ class Round extends Component {
             })
             this.setState({ answers: [] })
             let emptyAns = document.getElementById("button3");
+            let nextBtn = document.getElementById("next");
+            nextBtn.setAttribute("class", "endgame")
             emptyAns.setAttribute("class", "no")
             emptyAns.disabled = false;
         }
@@ -125,35 +130,34 @@ class Round extends Component {
         
         return (
             <div className="round-cont startpage">
+                <div className="top-span"></div>
+                <div className="bottom-span"></div>
                 <div className="round-wrap">
-                    <div className="top-span"></div>
-                    <div className="bottom-span"></div>
-                    <h3 className="question">Question <span id="question">{this.state.questionNumber}</span>: </h3>
-                    <p>{currentQuestion}</p>
+
+                    <div className="question-cont">
+                        <h3 className="question">Question <span id="question-num">{this.state.questionNumber}</span>: </h3>
+                        <p className="current-question">{currentQuestion}</p>
+                    </div>
+
                     <ul className="round-choices">
                         <li><button id="button" onClick={this.onAnswer}>{answers[0]}</button></li>
                         <li><button id="button" onClick={this.onAnswer}>{answers[1]}</button></li>
                         <li><button id="button" onClick={this.onAnswer}>{answers[2]}</button></li>
                         <li><button id="button3" onClick={this.onAnswer}>{answers[3]}</button></li>
                     </ul>
-                    <button className="next-btn" id="next" onClick={this.nextQuestion}>Next</button>
+                    
+                    <button className="next-btn" id="next" onClick={this.nextQuestion}>Next Question</button>
 
-                
                     <Link to={{
                         pathname: '/results',
                         aboutProps: {
                             name: 'Info was clicked from results',
                             tally: this.state.tally
                         }
-                        
                     }}> 
                         <button id="endgame" className="endgame" onClick={this.endGame}>See Results</button>
                     </Link>
-                    
-                    
 
-                    
-                   
                 </div>
             </div>
         )
