@@ -2,6 +2,18 @@
 
 This app was created as an application submission for Tandem's Apprentiship Program.
 
+The game title and Tandem logo are also links to Tandem's website.
+
+To begin, click/press the "Start Game" button.
+
+The user is greeted with a random question and four answers presented in a random order. Clicking on an answer will reveal the "Next Quetion" button.
+
+With each press of the "Next Question" button, the question number will increase by one and the user will be presented with a new, non-repeating, random question.
+
+Once the user has answered ten questions, the "Next Question" button will disappear to be replaced with a "See Results" button.
+
+Clicking the "See Results" button will take the user to the results page where they can view the percentage of questions they got right as well as a button that will allow the user to play the game again.
+
 ## Installed Dependencies
 - npx create-react-app app-name
 - npm i
