@@ -66,6 +66,7 @@
 .round-choices {
     list-style: none;
     display: flex;
+    flex-direction: column;
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
