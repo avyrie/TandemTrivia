@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Results from '../Results/Results'
+// CSS 
 import './Round.css';
 
 class Round extends Component {
@@ -7,6 +10,7 @@ class Round extends Component {
         answers: [],
         index: 0,
         tally: [],
+        questionNumber: 1,
     }
 
     // * Create an answers array with both wrong and right answers *
@@ -77,7 +81,6 @@ class Round extends Component {
             let next = document.querySelector("#next");
             next.setAttribute("class", "endgame")
         } 
-        
     }
 
     // * Increases the index in state by 1. On click, this will update the current round to a new round *
@@ -101,6 +104,8 @@ class Round extends Component {
             emptyAns.setAttribute("class", "no")
             emptyAns.disabled = false;
         }
+        let questionNum = this.state.questionNumber + 1;
+        this.setState({ questionNumber: questionNum })
     };
 
     
@@ -121,7 +126,7 @@ class Round extends Component {
         return (
             <div className="round-cont">
                 <div className="round-wrap">
-                    <h3>Question: </h3>
+                    <h3>Question {this.state.questionNumber}: </h3>
                     <p>{currentQuestion}</p>
                     <ul className="round-choices">
                         <li><button id="button" onClick={this.onAnswer}>{answers[0]}</button></li>
@@ -130,7 +135,23 @@ class Round extends Component {
                         <li><button id="button3" onClick={this.onAnswer}>{answers[3]}</button></li>
                     </ul>
                     <button className="next-btn" id="next" onClick={this.nextQuestion}>Next</button>
-                    <button id="endgame" className="endgame" onClick={this.endGame}>See Results</button>
+
+                
+                    <Link to={{
+                        pathname: '/results',
+                        aboutProps: {
+                            name: 'Info was clicked from results',
+                            tally: this.state.tally
+                        }
+                        
+                    }}> 
+                        <button id="endgame" className="endgame" onClick={this.endGame}>See Results</button>
+                    </Link>
+                    
+                    
+
+                    
+                   
                 </div>
             </div>
         )

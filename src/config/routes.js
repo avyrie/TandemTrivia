@@ -1,26 +1,23 @@
-// import React from 'react';
-// import { Switch, Route, Router } from 'react-router-dom';
-// import Home from '../containers/Home'
-// import QuestionContainer from '../containers/RoundsList/RoundsList'
-// import Results from '../containers/Results'
+import React from 'react';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import StartPage from '../components/StartPage/StartPage'
+import RoundsList from '../containers/RoundsList/RoundsList'
+import Results from '../components/Results/Results'
 
 
-// function Routes(props) {
-//     const { onAnswer, answers } = props;
+function Routes() {
 
-//     return(
-//         <Router>
-//             <Switch>
-//                 <Route exact path='/' component={Home} />
-//                 <Route 
-//                     exact path='/questions' 
-//                     render={(props) => <QuestionContainer {...props} onAnswer={onAnswer} answers={answers} />} />
-//                 <Route 
-//                     exact path='/results' 
-//                     render={(props) => <Results {...props} answers={answers} />} />
-//             </Switch>
-//         </Router>
-//     )
-// }
+    return(
+        <Router>
+            <Switch>
+                <Route exact path='/' component={StartPage} />
+                <Route exact path='/questions' component={RoundsList} />
+                    
+                <Route 
+                    exact path='/results' component={Results} />
+            </Switch>
+        </Router>
+    )
+}
 
-// export default Routes;
+export default Routes;
