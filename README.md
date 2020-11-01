@@ -31,6 +31,8 @@ Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from
 - CSS3
 - Bootstrap
 
+### Deployed with netlify
+
 ## Future Iterations
 - high score board
 - option to challenge your friends
