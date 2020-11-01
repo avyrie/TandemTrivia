@@ -45,7 +45,7 @@ Icons made by <a href="https://www.flaticon.com/free-icon/faq_788893?term=color%
 - CSS3
 - Bootstrap
 
-### Deployed with netlify
+### Deployed with netlify - https://ecstatic-beaver-43605f.netlify.app/
 [![Netlify Status](https://api.netlify.com/api/v1/badges/599a1a6f-33e1-4e5b-b461-cffdae63c709/deploy-status)](https://app.netlify.com/sites/ecstatic-beaver-43605f/deploys)
 
 ## Future Iterations
