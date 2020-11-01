@@ -6,9 +6,12 @@ body {
   justify-content: center;
   height: 100vh;
   border-radius: 2px solid rgb(11, 156, 156);
+  font-family: 'Source Code Pro', monospace;
 }
 
-
+button {
+  font-family: 'Source Code Pro', monospace;
+}
 button:hover {
   cursor: pointer;
 }

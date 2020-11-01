@@ -10,11 +10,9 @@ function Routes() {
     return(
         <Router>
             <Switch>
-                <Route exact path='/' component={StartPage} />
                 <Route exact path='/questions' component={RoundsList} />
-                    
-                <Route 
-                    exact path='/results' component={Results} />
+                <Route exact path='/results' component={Results} />
+                <Route exact path='/' component={StartPage} />
             </Switch>
         </Router>
     )

@@ -124,9 +124,10 @@ class Round extends Component {
         console.log(`ANSWERS: ${answers.length}`)
         
         return (
-            <div className="round-cont">
+            <div className="round-cont startpage">
                 <div className="round-wrap">
-                    <h3>Question {this.state.questionNumber}: </h3>
+                    <div className="bottom-span"></div>
+                    <h3 className="question">Question <span id="question">{this.state.questionNumber}</span>: </h3>
                     <p>{currentQuestion}</p>
                     <ul className="round-choices">
                         <li><button id="button" onClick={this.onAnswer}>{answers[0]}</button></li>

@@ -1,13 +1,5 @@
 .round-cont {
-    margin: 0 auto;
-    top: 50px;
-    border: 2px solid black;
-    width: 50%;
-    height: 80%;
-    display: flex;
-    flex: 1 0 auto;
-    flex-direction: column;
-    overflow: auto;
+    min-height: 400px;
 }
 .round-wrap {
     height: 100%;
@@ -20,9 +12,35 @@
 .round-wrap p {
     text-align: center;
 }
-.round-wrap h3 {
+.question {
     text-align: center;
-    padding-top: 10%;
+    color: var(--blue-green);
+    z-index: 3;
+}
+#question {
+    position: relative;
+    z-index: 3;
+}
+
+.bottom-span {
+    background-color: var(--reddish);
+    height: 10%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+}
+
+
+button {
+    color: var(--blue-green);
+    background-color: var(--off-white);
+    border: 1px solid var(--blue-green);
+    z-index: 3;
+}
+button:hover {
+    background-color: var(--blue-green);
+    color: var(--off-white);
 }
 
 .round-choices {
@@ -33,7 +51,8 @@
     justify-content: center;
     padding-left: 0;
     padding-right: 5%;
-    padding-top: 35%;
+    /* padding-top: 5%; */
+    z-index: 3;
 }
 .round-choices li {
     padding: 15px;
