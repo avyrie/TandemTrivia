@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Results from '../Results/Results'
 // CSS 
 import './Round.css';
 
@@ -77,6 +76,7 @@ class Round extends Component {
         console.log(`Tally length: ${tally.length}`)
         let nextBtn = document.getElementById("next");
         nextBtn.removeAttribute("class", "next-btn")
+
         if (tally.length > 9) {
             let endGame = document.querySelector("#endgame");
             endGame.setAttribute("class", "showResults")
@@ -113,20 +113,26 @@ class Round extends Component {
         this.setState({ questionNumber: questionNum })
     };
 
-    
-    
     render() {
         // variable holding the list of 10 random rounds
         let roundsList = this.state.roundsList;
-        // console.log(`Rounds List: ${JSON.stringify(roundsList)}`);
         // variable holding the current round 
         let currentRound = roundsList[this.state.index];
+        // variable holding the incorrect answers 
         let currentIncorrects = currentRound.incorrect;
+        // variable holding the correct answer converted to a string 
         let currentCorrect = JSON.stringify(currentRound.correct);
+        // variable holding the current question converted to a string 
         let currentQuestion = JSON.stringify(currentRound.question);
+        // variable holding the array of incorrect and correct answers 
         let answers = this.answersArr(currentIncorrects, currentCorrect)
 
-        console.log(`ANSWERS: ${answers.length}`)
+        // tests whether there are multiple items in the answers array, if answers is an array, and that the current question is loading
+        if (answers.length > 3 && Array.isArray(answers) && currentQuestion) {
+            console.log(`Round: Success!`);
+        } else {
+            console.log(`Round: Failure!`);
+        }
         
         return (
             <div className="round-cont startpage">

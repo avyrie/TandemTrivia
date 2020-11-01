@@ -5,20 +5,23 @@ import './Results.css';
 
 
 function Results(props) {
-    console.log(`Result Props: ${JSON.stringify(props.location.aboutProps)}`)
     let unStringTally = props.location.aboutProps.tally;
-    let tally = JSON.stringify(props.location.aboutProps.tally);
     let results = [];
 
+    // Creates an array of true answers
     for (let i = 0; i < unStringTally.length; i++) {
         if ( unStringTally[i] == true) {
             results.push(unStringTally[i])
         }
     }
-    console.log(`results array of trues: ${results}`)
-    // console.log(`tally ${unStringTally[0]}`)
+
     let percentage = (results.length/unStringTally.length) * 100;
-    console.log(percentage)
+    // Test to make sure the results returned as an array, that the percentage of true answers is a number, and that the total number of answers is equal to 10
+    if(Array.isArray(results) && unStringTally.length === 10 && typeof percentage == "number") {
+        console.log(`Results: Success!`);
+    } else {
+        console.log(`Results: Failure`);
+    };
 
     return (
         <div className="startpage">
