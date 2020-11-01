@@ -24,15 +24,25 @@
 
 .bottom-span {
     background-color: var(--reddish);
-    height: 10%;
+    height: 15%;
     width: 100%;
     position: absolute;
     z-index: 1;
     bottom: 0;
+    border: 1px solid rgb(141, 112, 104);
+}
+.top-span {
+    background-color: rgb(231, 193, 86);
+    height: 15%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    border: 1px solid rgb(156, 130, 58);
 }
 
 
-button {
+.next-btn {
     color: var(--blue-green);
     background-color: var(--off-white);
     border: 1px solid var(--blue-green);
@@ -55,27 +65,45 @@ button:hover {
     z-index: 3;
 }
 .round-choices li {
-    padding: 15px;
+    padding: 13px;
+    margin: 5px;
 }
 .round-choices li button {
     padding: 10px;
     width: 120%;
+    border-radius: 10px;
+    border: 2px solid lightgrey;
+}
+.round-choices li button:hover {
+    border: 2px solid var(--blue-green);
 }
 .next-btn {
     bottom: 0;
     padding: 10px;
     width: 65%;
     position: relative;
+    border-radius: 10px;
 }
 
 .true {
     color: #fff;
-    background-color: green;
+    background-color: rgb(46, 167, 66);
+    border: 2px solid rgb(46, 167, 66);
 }
 .false {
     color: #fff;
-    background-color: red;
+    background-color: rgb(196, 65, 65);
+    border: 2px solid rgb(196, 65, 65);
 }
 .empty, .endgame {
     display: none;
+}
+#endgame {
+    padding: 10px;
+    width: 180px;
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+}
+#endgame:hover {
+    border: none;
 }

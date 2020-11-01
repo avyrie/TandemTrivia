@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Circle from '../../images/circle-sketch.png'
+import './Results.css';
+
 
 function Results(props) {
     console.log(`Result Props: ${JSON.stringify(props.location.aboutProps)}`)
@@ -18,11 +21,16 @@ function Results(props) {
     console.log(percentage)
 
     return (
-        <div>
-            <h1>This is the results page</h1>
-            <h3>You got {percentage}% of the questions right!</h3>
+        <div className="startpage">
+            <div className="uppercircle"></div>
+            <div className="lowercircle"><img src={Circle}/></div>
+            <div id="results">
+                <h3>You got </h3>
+                <h4>{percentage}%</h4> 
+                <h3>of the questions right!</h3>
+            </div>
             <Link to="/">
-                <button>Play Again</button>
+                <button id="play-again">Play Again</button>
             </Link>
         </div>
     )

@@ -126,6 +126,7 @@ class Round extends Component {
         return (
             <div className="round-cont startpage">
                 <div className="round-wrap">
+                    <div className="top-span"></div>
                     <div className="bottom-span"></div>
                     <h3 className="question">Question <span id="question">{this.state.questionNumber}</span>: </h3>
                     <p>{currentQuestion}</p>

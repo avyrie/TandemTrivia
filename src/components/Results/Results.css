@@ -1,0 +1,50 @@
+#results, #play-again {
+    z-index: 4;
+}
+/* Results wrapper  */
+#results {
+    padding-bottom: 5%;
+    display: block;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* Percentage of correct answers  */
+#results h4 {
+    font-size: 50px;
+    color: var(--golden);
+    border: 8px solid var(--golden);
+    border-radius: 50%;
+    height: 25vh;
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    background-color: rgb(243, 241, 241);
+}
+/* "You got" and "of the questions right!"  */
+#results h3 {
+    color: var(--blue-green);
+    font-size: 30px;
+    background-color: rgb(243, 241, 241);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+/* Restart game button  */
+#play-again {
+    position: relative;
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+    bottom: 0;
+    padding: 10px;
+    width: 180px;
+    color: var(--blue-green);
+}
+#play-again:hover {
+    border: 2px solid var(--blue-green);
+    color: var(--off-white);
+}

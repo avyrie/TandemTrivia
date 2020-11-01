@@ -1,10 +1,12 @@
+/* Color variables  */
 :root {
     --blue-green: rgb(11, 156, 156);
     --off-white: rgb(221, 232, 235);
     --tandem: rgb(113,114,68);
     --reddish: rgb(235, 187, 175);
+    --golden: rgb(231, 193, 86);
 }
-
+/* Component wrapper  */
 .startpage {
     height: 80vh;
     width: 60vw;
@@ -21,7 +23,7 @@
     position: relative;
     margin: 15px;
 }
-
+/* Pink circle  */
 .uppercircle {
     background-color: var(--reddish);
     height: 50%;
@@ -32,6 +34,7 @@
     right: 0;
     border-radius: 33% 0% 33% 43%;
 }
+/* Striped circle  */
 .lowercircle {
     height: 20%;
     width: 20%;
@@ -41,21 +44,22 @@
     left: 0;
     border-radius: 33% 25% 33% 43%;
 }
-
+/* Decorative line  */
 .line {
     padding-top: 2%;
     padding-bottom: 2%;
     z-index: 4;
     text-align: center;
 }
-
+/* Title of game/link to Tandem page  */
 .title-link {
     color: var(--blue-green);
     text-align: center;
     z-index: 2;
     font-size: 38px;
-    line-height: 15px;;
+    line-height: 45px;
 }
+/* Title of game  */
 #start-name {
     font-size: 50px;
     padding-top: 8%;
@@ -64,13 +68,14 @@
     color: var(--tandem);
     cursor: pointer;
 }
+/* Tandem Logo  */
 .tandem {
     width: 23%;
     padding-top: 5px;
     z-index: 4;
     text-decoration: underline;
 }
-
+/* Buttons wrapper  */
 .btns-wrap {
     width: 70%;
     display: flex; 
@@ -80,6 +85,7 @@
     padding-top: 5%;
     padding-bottom: 2%;
 }
+/* Start game and link to github buttons  */
 .start-btns {
     display: block;
     position: relative;
@@ -91,16 +97,17 @@
     color: var(--blue-green);
     background-color: var(--off-white);
     z-index: 3;
+    border-radius: 10px;;
 }
 .start-btns:hover {
     color: rgb(221, 232, 235);
     background-color: var(--blue-green);
 }
-
+/* No underline on links  */
 a {
     text-decoration: none;
 }
-
+/* Start and github icons  */
 .fab, .fas {
     float: left;
     font-size: 25px;
