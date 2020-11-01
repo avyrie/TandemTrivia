@@ -1,27 +1,8 @@
+/* Element container  */
 .round-cont {
     min-height: 400px;
 }
-.round-wrap {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-.round-wrap p {
-    text-align: center;
-}
-.question {
-    text-align: center;
-    color: var(--blue-green);
-    z-index: 3;
-}
-#question {
-    position: relative;
-    z-index: 3;
-}
-
+/* Background decorations  */
 .bottom-span {
     background-color: var(--reddish);
     height: 15%;
@@ -40,70 +21,121 @@
     top: 0;
     border: 1px solid rgb(156, 130, 58);
 }
-
-
-.next-btn {
+/* Information container  */
+.round-wrap {
+    height: 90%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    min-width: 400px;
+    background-color: rgb(254,240,237, 0.6);
+    border-radius: 25px;
+    z-index: 2;
+    overflow: cover;
+}
+/* Question container  */
+.question-cont {
+    text-align: center;
     color: var(--blue-green);
-    background-color: var(--off-white);
-    border: 1px solid var(--blue-green);
+    position: relative;
+    /* top: 10%; */
+    z-index: 4;
+}
+/* Current question number  */
+#question-num {
+    position: relative;
     z-index: 3;
 }
-button:hover {
+/* Current question text  */
+.current-question {
+    text-align: center;
+    z-index: 5;
+    padding: 15px;
+    color: black;
+    margin: 0;
+}
+/* For all buttons  */
+#next:hover, .start-btns:hover, #endgame:hover, #play-again:hover {
     background-color: var(--blue-green);
     color: var(--off-white);
 }
-
+/* Answers container ul */
 .round-choices {
     list-style: none;
     display: flex;
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     padding-left: 0;
-    padding-right: 5%;
+    padding-right: 12%;
     /* padding-top: 5%; */
     z-index: 3;
 }
+/* Answers  */
 .round-choices li {
-    padding: 13px;
+    padding: 8px;
     margin: 5px;
 }
+/* Answers buttons  */
 .round-choices li button {
-    padding: 10px;
+    padding: 5px 15px;
     width: 120%;
     border-radius: 10px;
     border: 2px solid lightgrey;
 }
-.round-choices li button:hover {
-    border: 2px solid var(--blue-green);
-}
-.next-btn {
-    bottom: 0;
-    padding: 10px;
-    width: 65%;
-    position: relative;
-    border-radius: 10px;
-}
-
+/* If selected answer is true  */
 .true {
     color: #fff;
     background-color: rgb(46, 167, 66);
     border: 2px solid rgb(46, 167, 66);
 }
+/* If selected answer is false  */
 .false {
     color: #fff;
     background-color: rgb(196, 65, 65);
     border: 2px solid rgb(196, 65, 65);
 }
-.empty, .endgame {
-    display: none;
-}
-#endgame {
+/* Next question button  */
+#next, #endgame {
+    color: var(--blue-green);
+    background-color: var(--off-white);
+    border: 1px solid var(--blue-green);
+    z-index: 3;
+    bottom: 7%;
     padding: 10px;
-    width: 180px;
-    border: 2px solid lightgrey;
+    width: 65%;
+    position: absolute;
     border-radius: 10px;
 }
-#endgame:hover {
-    border: none;
+/* See results button, also hides next button until an answer has been selected  */
+.empty, .endgame, .next-btn {
+    display: none !important;
 }
+#endgame {
+    float: left;
+}
+#endgame:hover {
+    border: 2px solid var(--blue-green);
+}
+.showResults {
+    left: 17% !important;
+}
+
+
+@media screen and (max-height: 640px) {
+    button {
+        padding: 2px !important;
+        font-size: 12px;
+    }
+    li {
+        padding: 2px !important;
+    }
+    .round-choices {
+        flex-direction: column;
+    }
+}
+
