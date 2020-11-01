@@ -2,6 +2,8 @@
 
 This app was created as an application submission for Tandem's Apprentiship Program.
 
+I specifically chose a color scheme that compliments what is shown on Tandem's website.
+
 The game title and Tandem logo are also links to Tandem's website.
 
 To begin, click/press the "Start Game" button.
