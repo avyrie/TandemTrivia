@@ -1,0 +1,83 @@
+:root {
+    --blue-green: rgb(11, 156, 156);
+    --off-white: rgb(221, 232, 235);
+    --tandem: rgb(113,114,68);
+}
+
+.startpage {
+    height: 80vh;
+    width: 60vw;
+    min-height: 350px;
+    max-width: 800px;
+    border: 5px solid var(--blue-green);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: contain;
+    border-radius: 25px;
+}
+
+.pineapple {
+    position: absolute;
+    z-index: 1;
+    height: 80%;
+    width: 55%;
+    min-height: 300px;
+    max-height: 530px;
+}
+
+.title-link {
+    color: var(--blue-green);
+    text-align: center;
+    z-index: 2;
+    font-size: 38px;
+    line-height: 15px;;
+}
+#start-name {
+    font-size: 50px;
+}
+#start-name:hover {
+    color: var(--tandem);
+    cursor: pointer;
+}
+.tandem {
+    width: 20%;
+    padding-top: 5px;
+    z-index: 3;
+    text-decoration: underline;
+}
+
+.btns-wrap {
+    width: 70%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20%;
+}
+.start-btns {
+    display: block;
+    position: relative;
+    padding: 10px;
+    width: 300px;
+    margin: 10px;
+    font-size: 20px;
+    border: none;
+    color: var(--blue-green);
+    background-color: var(--off-white);
+    z-index: 3;
+}
+.start-btns:hover {
+    color: rgb(221, 232, 235);
+    background-color: var(--blue-green);
+}
+
+a {
+    text-decoration: none;
+}
+
+.fab, .fas {
+    float: left;
+    font-size: 25px;
+}

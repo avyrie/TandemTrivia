@@ -5,7 +5,9 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  border-radius: 2px solid rgb(11, 156, 156);
 }
+
 
 button:hover {
   cursor: pointer;
