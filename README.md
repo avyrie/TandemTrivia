@@ -8,7 +8,7 @@ The game title and Tandem logo are also links to Tandem's website.
 
 To begin, click/press the "Start Game" button.
 
-The user is greeted with a random question and four answers presented in a random order. Clicking on an answer will reveal the "Next Quetion" button.
+The user is greeted with a random question and four answers presented in a random order. Clicking on an answer will reveal the "Next Question" button.
 
 With each press of the "Next Question" button, the question number will increase by one and the user will be presented with a new, non-repeating, random question.
 
