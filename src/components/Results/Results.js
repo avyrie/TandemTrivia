@@ -5,12 +5,14 @@ import './Results.css';
 
 
 function Results(props) {
-    let unStringTally = props.location.aboutProps.currentUser;
+    let unStringTally = props.history.location.aboutProps.tally;
+    console.log(`Props from results: ${JSON.stringify(props)}`);
+    console.log(`tally from results: ${unStringTally}`);
     let results = [];
 
     // Creates an array of true answers
     for (let i = 0; i < unStringTally.length; i++) {
-        if ( unStringTally[i] === true) {
+        if ( unStringTally[i] == true) {
             results.push(unStringTally[i])
         }
     }

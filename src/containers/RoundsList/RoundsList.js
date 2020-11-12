@@ -15,7 +15,7 @@ function RoundsList() {
         let randNumsArr = Object.keys(keys).map((num) => parseInt(num))
         return randNumsArr
     }
-    // randomArr();
+
     let randArr = randomArr();
     console.log(`Random array: ${randArr}`)
 
@@ -37,8 +37,6 @@ function RoundsList() {
         return randArr;
     }
     let shuffledArr = shuffle();
-    // console.log(`shuffle: ${shuffle()}`)
-    // console.log(shuffle())
 
 
     // TEST to see if the length of the resulting array is 10. uniqueArray removes duplicate items from an array so if the length is 10, no items have been removed and it is truly a randomized, non-repeating array!
@@ -55,9 +53,6 @@ function RoundsList() {
 
     console.log(testUnique(uniqueArray))
 
-    console.log(`uniueArr : ${uniqueArray}`)
-    console.log(uniqueArray)
-
 
     // * Creates an array of 10 random rounds from the data *
     let roundsList = [];
@@ -65,13 +60,9 @@ function RoundsList() {
         for (let j = 0; j < uniqueArray.length; j++) {
             roundsList.push(data[uniqueArray[j]])
         }
-        // console.log(JSON.stringify(roundsList))
         return roundsList;
     }
     createQuestions();
-    // console.log(`These are the questions: ${JSON.stringify(createQuestions())}`);
-    console.log(`These are the questions in roundslist: ${JSON.stringify(roundsList)}`);
-    // console.log(`These are the questions in roundslist: ${roundsList}`);
     
     return (
         <Round 

@@ -35,7 +35,7 @@ class Round extends Component {
             return array;
         };
         answers = shuffle(answers);
-        // console.log(`ANSWERS SHUF ${answers}`)
+     
         if (answers.length < 4) {
             let emptyAns = document.getElementById("button3");
             emptyAns.setAttribute("class", "empty")
@@ -94,7 +94,6 @@ class Round extends Component {
         } else {
             this.setState({ index: (this.state.index +1) % roundsList.length});
             let buttons = document.querySelectorAll("#button");
-            // let next = document.querySelector(".next-btn")
             
             // * Enables the buttons to be selected again  and removes class responsible for color *
             buttons.forEach(function(button) {
@@ -110,10 +109,10 @@ class Round extends Component {
         }
         let questionNum = this.state.questionNumber + 1;
         this.setState({ questionNumber: questionNum })
+        console.log(`Tally: ${tally}`)
     };
 
     render() {
-        console.log(`this is the current list of questions in round: ${JSON.stringify(this.state.roundsList)}`)
         // variable holding the list of 10 random rounds
         let roundsList = this.state.roundsList;
         // variable holding the current round 
@@ -161,7 +160,7 @@ class Round extends Component {
                             tally: this.state.tally
                         }
                     }}> 
-                        <button id="endgame" className="endgame" onClick={this.endGame}>See Results</button>
+                        <button id="endgame" className="endgame">See Results</button>
                     </Link>
 
                 </div>
