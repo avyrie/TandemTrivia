@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // CSS 
 import './Round.css';
 
@@ -19,7 +19,7 @@ class Round extends Component {
             answers.push(JSON.stringify(wrong[i]))
         }
         answers.push(right)
-        // console.log(`Answers array ${answers}`)
+        console.log(`Answers array ${answers}`)
 
         // Randomizes answers array
         function shuffle (array) {
@@ -43,7 +43,6 @@ class Round extends Component {
         return answers;
     }
     
-
     onAnswer = (e) => {
         // variable holding the list of 10 random rounds
         let roundsList = this.state.roundsList;
@@ -95,7 +94,7 @@ class Round extends Component {
         } else {
             this.setState({ index: (this.state.index +1) % roundsList.length});
             let buttons = document.querySelectorAll("#button");
-            let next = document.querySelector(".next-btn")
+            // let next = document.querySelector(".next-btn")
             
             // * Enables the buttons to be selected again  and removes class responsible for color *
             buttons.forEach(function(button) {
@@ -114,6 +113,7 @@ class Round extends Component {
     };
 
     render() {
+        console.log(`this is the current list of questions in round: ${JSON.stringify(this.state.roundsList)}`)
         // variable holding the list of 10 random rounds
         let roundsList = this.state.roundsList;
         // variable holding the current round 

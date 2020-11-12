@@ -5,12 +5,12 @@ import './Results.css';
 
 
 function Results(props) {
-    let unStringTally = props.location.aboutProps.tally;
+    let unStringTally = props.location.aboutProps.currentUser;
     let results = [];
 
     // Creates an array of true answers
     for (let i = 0; i < unStringTally.length; i++) {
-        if ( unStringTally[i] == true) {
+        if ( unStringTally[i] === true) {
             results.push(unStringTally[i])
         }
     }
@@ -26,7 +26,7 @@ function Results(props) {
     return (
         <div className="startpage">
             <div className="uppercircle"></div>
-            <div className="lowercircle"><img src={Circle}/></div>
+            <div className="lowercircle"><img alt='' src={Circle}/></div>
             <div id="results">
                 <h3>You got </h3>
                 <h4>{percentage}%</h4> 
