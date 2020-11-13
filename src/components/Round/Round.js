@@ -48,10 +48,26 @@ class Round extends Component {
         let roundsList = this.state.roundsList;
         // variable holding the current round 
         let currentRound = roundsList[this.state.index];
+        let currentIncorrects = currentRound.incorrect;
         let currentCorrect = JSON.stringify(currentRound.correct);
        
         // If you click a choice and it is wrong, function will add false to an array and vice versa 
         let tally = this.state.tally;
+        let allBtns = document.querySelectorAll("button");
+       
+        // console.log(allBtns[1].innerHTML)
+
+        function correctBtn() {
+            for (let i = 0; i < 6; i++) {
+                if (allBtns[i].innerHTML == currentCorrect) {
+                    let correctButt = allBtns[i];
+                    return correctButt
+                }
+            }
+        }
+        let correctAns = correctBtn();
+        // let correctAns = correctBtn().innerHTML;
+        console.log(correctAns)
         
         if (e.target.innerHTML == currentCorrect) {
             tally.push(true);
@@ -59,10 +75,12 @@ class Round extends Component {
             // e.target.className += "true"
         } else {
             tally.push(false);
-            e.target.setAttribute("class", "false")
+            e.target.setAttribute("class", "false");
+            correctAns.style.border = '2px solid green';
             // e.target.className += "false"
         }
-     
+
+        
         // * Disables all the answer button so another selection cannot be made *
         let buttons = document.querySelectorAll("#button");
         buttons.forEach(function(button) {
@@ -99,6 +117,7 @@ class Round extends Component {
             buttons.forEach(function(button) {
                 button.setAttribute("class", "no")
                 button.disabled = false;
+                button.style.border = "2px solid lightgrey"
             })
             this.setState({ answers: [] })
             let emptyAns = document.getElementById("button3");
@@ -106,6 +125,7 @@ class Round extends Component {
             nextBtn.setAttribute("class", "endgame")
             emptyAns.setAttribute("class", "no")
             emptyAns.disabled = false;
+            emptyAns.style.border = "2px solid lightgrey"
         }
         let questionNum = this.state.questionNumber + 1;
         this.setState({ questionNumber: questionNum })
