@@ -2,6 +2,8 @@
 
 This app was created as an application submission for Tandem's Apprentiship Program.
 
+The prompt for this challenge was to create a trivia app that displays trivia questions with multiple-choice answers to select from. At minimum, the player can view the question(s), the answer choices, the correct answer upon submission, and their score. A round of trivia has 10 questions, all questions are multiple-choice, trivia data such as the questions, correct and incorrect answers are provided via a JSON file, questions with their multiple choice options must be displayed one at a time, questions should not repeat in a round, a user can select only 1 answer out of the 4 possible answers, the correct answer must be revealed after a user has submitted their answer and a user can see the score they received at the end of the round.
+
 I specifically chose a color scheme that compliments what is shown on Tandem's website.
 
 The game title and Tandem logo are also links to Tandem's website.
@@ -16,7 +18,7 @@ Once the user has answered ten questions, the "Next Question" button will disapp
 
 Clicking the "See Results" button will take the user to the results page where they can view the percentage of questions they got right as well as a button that will allow the user to play the game again.
 
-## Installed Dependencies
+## Instillations
 - npx create-react-app app-name
 - npm i
 - npm i react-router-dom
