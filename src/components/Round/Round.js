@@ -51,12 +51,10 @@ class Round extends Component {
         let currentIncorrects = currentRound.incorrect;
         let currentCorrect = JSON.stringify(currentRound.correct);
        
-        // If you click a choice and it is wrong, function will add false to an array and vice versa 
-        let tally = this.state.tally;
+        
         let allBtns = document.querySelectorAll("button");
-       
-        // console.log(allBtns[1].innerHTML)
 
+        // Isolates which button containing the correct answer
         function correctBtn() {
             for (let i = 0; i < 6; i++) {
                 if (allBtns[i].innerHTML == currentCorrect) {
@@ -66,22 +64,24 @@ class Round extends Component {
             }
         }
         let correctAns = correctBtn();
-        // let correctAns = correctBtn().innerHTML;
         console.log(correctAns)
+
+        // If you click a choice and it is wrong, function will add false to an array and vice versa 
+        let tally = this.state.tally;
         
         if (e.target.innerHTML == currentCorrect) {
             tally.push(true);
+            // Button will change to green if the selected answer is correct
             e.target.setAttribute("class", "true")
-            // e.target.className += "true"
         } else {
             tally.push(false);
+            // Button will change to red if the selected answer is false
             e.target.setAttribute("class", "false");
+            // Creates a green border around the correct answer if the user answers incorrectly
             correctAns.style.border = '2px solid green';
-            // e.target.className += "false"
         }
-
         
-        // * Disables all the answer button so another selection cannot be made *
+        // Disables all the answer button so another selection cannot be made 
         let buttons = document.querySelectorAll("#button");
         buttons.forEach(function(button) {
             button.disabled = true;
@@ -89,11 +89,11 @@ class Round extends Component {
         let emptyAns = document.getElementById("button3");
         emptyAns.disabled = true;
         console.log(`Tally: ${tally}`)
-        // return tally;
         console.log(`Tally length: ${tally.length}`)
         let nextBtn = document.getElementById("next");
         nextBtn.removeAttribute("class", "next-btn")
 
+        // If all 10 questions have been answered, the next button will change to a see results button
         if (tally.length > 9) {
             let endGame = document.querySelector("#endgame");
             endGame.setAttribute("class", "showResults")
@@ -102,7 +102,6 @@ class Round extends Component {
         } 
     }
 
-    // * Increases the index in state by 1. On click, this will update the current round to a new round *
     nextQuestion = () => {
         let tally = this.state.tally;
         let roundsList = this.state.roundsList;
@@ -110,10 +109,11 @@ class Round extends Component {
             let endGame = document.querySelector("#endgame");
             endGame.setAttribute("class", "showResults")
         } else {
+            // Increases the index in state by 1. On click, this will update the current round to a new round 
             this.setState({ index: (this.state.index +1) % roundsList.length});
             let buttons = document.querySelectorAll("#button");
             
-            // * Enables the buttons to be selected again  and removes class responsible for color *
+            // Enables the buttons to be selected again  and removes class responsible for color 
             buttons.forEach(function(button) {
                 button.setAttribute("class", "no")
                 button.disabled = false;
