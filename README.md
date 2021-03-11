@@ -19,7 +19,6 @@ Once the user has answered ten questions, the "Next Question" button will disapp
 Clicking the "See Results" button will take the user to the results page where they can view the percentage of questions they got right as well as a button that will allow the user to play the game again.
 
 ## Instillations
-- npx create-react-app app-name
 - npm i
 - npm i react-router-dom
 
